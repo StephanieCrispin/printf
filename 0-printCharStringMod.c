@@ -37,10 +37,7 @@ int printCharStringMod(const char *format, ...)
         _putchar(format[i]);
         len++;
     }
-    // _putchar(len);
+    va_end(arguments);
 
     return (len);
-    va_end(arguments);
 }
-
-// https://chat.openai.com/share/7e2b09b2-2fd6-47a9-a390-bac507b61776
