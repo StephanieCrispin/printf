@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
     va_start(args, format);
     for (; format[k] != '\0'; k++)
     {
-        if (format[k] != '%')
+        if (format[k] != '%' || (format[k] == '%' && format[k + 1] == 'v'))
         {
             _putchar(format[k]);
         }
