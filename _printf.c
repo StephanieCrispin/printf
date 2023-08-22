@@ -9,6 +9,44 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
+	int chars_printed = 0;
+	char c;
+
+	va_start(args, format);
+	while ((c = *format++) != '\0')
+	{
+		if (c == '%')
+		{
+			char next = *format++;
+			if (next == 'c')
+			{
+				char ch = (char)va_arg(args, int);
+				_putchar(ch);
+				chars_printed++;
+			}
+			else if (next == 's')
+			{
+				int str_value = OurPutS(va_arg(args, char *));
+				chars_printed += (str_value - 1);
+				chars_printed += str_value;
+			}
+			else
+			{
+				_putchar(c);
+				_putchar(next);
+				chars_printed += 2;
+			}
+		}
+		else
+		{
+			_putchar(c);
+			chars_printed++;
+		}
+	}
+	return (chars_printed);
+}
+
+/*va_list args;
 	unsigned int k = 0, chars_printed = 0;
 	if (format == NULL)
 	{
@@ -49,5 +87,4 @@ int _printf(const char *format, ...)
 	}
 	if (format[0] == '\n' || (format[0] == '%' && (!format[1])))
 		chars_printed = -1;
-	return (chars_printed);
-}
+	return (chars_printed);*/
