@@ -10,7 +10,11 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int k = 0, chars_printed = 0;
-
+	if (format == NULL)
+	{
+		_putchar(' ');
+		return (-1);
+	}
 	va_start(args, format);
 	for (; format[k] != '\0'; k++)
 	{
