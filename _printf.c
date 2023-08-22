@@ -23,8 +23,7 @@ int _printf(const char *format, ...)
         }
         else if (format[k] == '%' && format[k + 1] != 'c' && format[k + 1] != 's' && format[k + 1] != '%')
         {
-            if (format[k + 1] == 'v' || format[k + 1] == 'V')
-                _putchar(format[k]);
+            _putchar(format[k]);
         }
         else if (format[k + 1] == 'c')
         {
