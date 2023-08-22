@@ -19,10 +19,10 @@ int _printf(const char *format, ...)
         {
             _putchar(format[k]);
         }
-        /* else if (format[k] == '%' && format[k + 1] != 'c' && format[k + 1] != 's' && format[k + 1] != '%')
-         {
-             _putchar(format[k]);
-         }*/
+        else if (format[k] == '%' && format[k + 1] != 'c' && format[k + 1] != 's' && format[k + 1] != '%')
+        {
+            _putchar(format[k]);
+        }
         else if (format[k + 1] == 'c')
         {
             _putchar(va_arg(args, int));
