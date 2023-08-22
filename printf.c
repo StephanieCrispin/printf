@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 {
     int chars_printed = 0;
     char c;
-    int k;
+    /*   int k;*/
     va_list args;
     va_start(args, format);
 
@@ -41,22 +41,24 @@ int _printf(const char *format, ...)
             if (next == 'c')
             {
                 char ch = (char)va_arg(args, int);
+                if (ch <= 0)
+                    exit(99);
                 _putchar(ch);
                 chars_printed++;
             }
-            else if (next == 's')
-            {
-                char *str = va_arg(args, char *);
-                for (k = 0; str[k] != '\0'; k++)
-                    _putchar(str[k]);
+            /* else if (next == 's')
+             {
+                 char *str = va_arg(args, char *);
+                 for (k = 0; str[k] != '\0'; k++)
+                     _putchar(str[k]);
 
-                chars_printed += _strlen(str);
-            }
-            else if (next == '%')
-            {
-                _putchar('%');
-                chars_printed++;
-            }
+                 chars_printed += _strlen(str);
+             }
+             else if (next == '%')
+             {
+                 _putchar('%');
+                 chars_printed++;
+             }*/
         }
         else
         {
