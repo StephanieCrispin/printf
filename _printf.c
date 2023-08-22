@@ -46,5 +46,7 @@ int _printf(const char *format, ...)
         }
         chars_printed += 1;
     }
+    if (format[0] == '\n')
+        chars_printed = -1;
     return (chars_printed);
 }
