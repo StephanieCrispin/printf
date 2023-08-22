@@ -14,6 +14,13 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (; format[k] != '\0'; k++)
 	{
+		if (format[0] == '\n')
+			chars_printed = -1;
+		if ((format[0] == '%' && (!format[1])) || (format[0] == '%' && format[1] == ' '))
+		{
+			chars_printed = -1;
+			_putchar(' ');
+		}
 		if (format[k] != '%')
 			_putchar(format[k]);
 		else if (format[k] == '%' && format[k + 1] != 'c' && format[k + 1] != 's' && format[k + 1] != '%' && format[k + 1])
@@ -26,6 +33,7 @@ int _printf(const char *format, ...)
 		else if (format[k + 1] == 's')
 		{
 			int str_value = OurPutS(va_arg(args, char *));
+
 			k++;
 			chars_printed += (str_value - 1);
 		}
@@ -41,7 +49,6 @@ int _printf(const char *format, ...)
 		}
 		chars_printed += 1;
 	}
-	if (format[0] == '\n' || (format[0] == '%' && (!format[1])))
-		chars_printed = -1;
+
 	return (chars_printed);
 }
