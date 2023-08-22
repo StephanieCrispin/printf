@@ -1,43 +1,58 @@
-#include "main.h"
-#include <stdio.h>
-int _putchar(char s)
-{
-    return (write(1, &s, 1));
-}
+// #include "main.h"
+// #include <stdio.h>
 
-int printCharStringMod(const char *format, ...)
-{
-    va_list arguments;
-    int len = 0, i;
+// int _strlen(char *s)
+// {
+//     int length = 0;
 
-    va_start(arguments, format);
-    for (i = 0; format[i] != '\0'; i++)
-    {
-        if (format[i] == '%')
-        {
-            i++;
-            if (format[i] == 'c')
-            {
-                char ch = va_arg(arguments, int);
-                putchar(ch);
-                len++;
-            }
+//     while (s[length] != '\0')
+//         length++;
+//     return (length);
+// }
 
-            if (format[i] == 's')
-            {
-                char *str = va_arg(arguments, char *);
-                int k;
-                for (k = 0; str[k] != '\0'; k++)
-                {
-                    putchar(str[k] + 0);
-                    len++;
-                }
-            }
-        }
-        _putchar(format[i]);
-        len++;
-    }
-    va_end(arguments);
+// int _putchar(char s)
+// {
+//     return (write(1, &s, 1));
+// }
 
-    return (len);
-}
+// int printCharStringMod(const char *format, ...)
+// {
+//     va_list args;
+//     va_start(args, format);
+
+//     int chars_printed = 0;
+//     char c;
+
+//     while ((c = *format++) != '\0')
+//     {
+//         if (c == '%')
+//         {
+//             char next = *format++;
+//             if (next == 'c')
+//             {
+//                 char ch = (char)va_arg(args, int);
+//                 putchar(ch);
+//                 chars_printed++;
+//             }
+//             else if (next == 's')
+//             {
+//                 char *str = va_arg(args, char *);
+//                 fputs(str, stdout);
+//                 chars_printed += _strlen(str);
+//             }
+//             else if (next == '%')
+//             {
+//                 putchar('%');
+//                 chars_printed++;
+//             }
+//         }
+//         else
+//         {
+//             putchar(c);
+//             chars_printed++;
+//         }
+//     }
+
+//     va_end(args);
+//     return chars_printed;
+// }
