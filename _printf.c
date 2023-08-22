@@ -36,6 +36,8 @@ int _printf(const char *format, ...)
             if (va_arg(args, char *) == NULL)
             {
                 str_value = OurPutS(str);
+                k++;
+                chars_printed += (str_value - 1);
             }
             else
                 str_value = OurPutS(va_arg(args, char *));
