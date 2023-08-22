@@ -27,12 +27,12 @@ int _putchar(char s)
 
 int _printf(const char *format, ...)
 {
-    va_list args;
-    va_start(args, format);
-
     int chars_printed = 0;
     char c;
     int k;
+    va_list args;
+    va_start(args, format);
+
     while ((c = *format++) != '\0')
     {
         if (c == '%')
