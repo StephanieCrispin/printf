@@ -8,9 +8,11 @@
 int _printf(const char *format, ...)
 {
     va_list args;
+    char *str = NULL;
     unsigned k = 0, chars_printed = 0;
     char c;
     (void)c;
+    (void)str;
 
     va_start(args, format);
     for (; format[k] != '\0'; k++)
@@ -21,7 +23,8 @@ int _printf(const char *format, ...)
         }
         else if (format[k] == '%' && format[k + 1] != 'c' && format[k + 1] != 's' && format[k + 1] != '%')
         {
-            _putchar(format[k]);
+            if (format[k + 1] == 'v' || format[k + 1] == 'V')
+                _putchar(format[k]);
         }
         else if (format[k + 1] == 'c')
         {
@@ -30,6 +33,7 @@ int _printf(const char *format, ...)
         }
         else if (format[k + 1] == 's')
         {
+
             int str_value = OurPutS(va_arg(args, char *));
             k++;
             chars_printed += (str_value - 1);
