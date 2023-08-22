@@ -33,35 +33,38 @@ int _printf(const char *format, ...)
     va_list args;
     va_start(args, format);
 
-    while ((c = *format++) != '\0')
+    if (format != NULL)
     {
-        if (c == '%')
+        while ((c = *format++) != '\0')
         {
-            char next = *format++;
-            if (next == 'c')
+            if (c == '%')
             {
-                char ch = (char)va_arg(args, int);
-                _putchar(ch);
-                chars_printed++;
-            }
-            else if (next == 's')
-            {
-                char *str = va_arg(args, char *);
-                for (k = 0; str[k] != '\0'; k++)
-                    _putchar(str[k]);
+                char next = *format++;
+                if (next == 'c')
+                {
+                    char ch = (char)va_arg(args, int);
+                    _putchar(ch);
+                    chars_printed++;
+                }
+                else if (next == 's')
+                {
+                    char *str = va_arg(args, char *);
+                    for (k = 0; str[k] != '\0'; k++)
+                        _putchar(str[k]);
 
-                chars_printed += _strlen(str);
+                    chars_printed += _strlen(str);
+                }
+                else if (next == '%')
+                {
+                    _putchar('%');
+                    chars_printed++;
+                }
             }
-            else if (next == '%')
+            else
             {
-                _putchar('%');
+                _putchar(c);
                 chars_printed++;
             }
-        }
-        else
-        {
-            _putchar(c);
-            chars_printed++;
         }
     }
 
