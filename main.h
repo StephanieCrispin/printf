@@ -6,6 +6,5 @@
 #include <stdlib.h>
 
 int _printf(const char *format, ...);
-int printCharStringMod(const char *format, ...);
 
 #endif
