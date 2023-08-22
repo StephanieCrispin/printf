@@ -30,9 +30,7 @@ int _printf(const char *format, ...)
         }
         else if (format[k + 1] == 's')
         {
-
             int str_value = OurPutS(va_arg(args, char *));
-
             k++;
             chars_printed += (str_value - 1);
         }
