@@ -8,6 +8,8 @@
 int _printf(const char *format, ...);
 int _putchar(char s);
 void handle_int(int digit);
+int formatEdgeCase(const char *format);
+
 int OurPutS(char *string);
 
 #endif

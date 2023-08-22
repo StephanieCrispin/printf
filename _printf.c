@@ -1,5 +1,6 @@
 #include "main.h"
 #include <string.h>
+
 /**
  * _printf - Printf Function created
  * @format: format and specifier
@@ -8,21 +9,15 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	unsigned k = 0, chars_printed = 0;
-	char c;
-	(void)c;
+	unsigned int k = 0, chars_printed = 0;
 
 	va_start(args, format);
 	for (; format[k] != '\0'; k++)
 	{
 		if (format[k] != '%')
-		{
 			_putchar(format[k]);
-		}
 		else if (format[k] == '%' && format[k + 1] != 'c' && format[k + 1] != 's' && format[k + 1] != '%' && format[k + 1])
-		{
 			_putchar(format[k]);
-		}
 		else if (format[k + 1] == 'c')
 		{
 			_putchar(va_arg(args, int));
