@@ -28,6 +28,8 @@ int _printf(const char *format, ...)
 			else
 				chars_printed++;
 		}
+		else if (format[u] == 'd' || format[u] == 'i')
+			chars_printed += handle_int(args, buff, u);
 		else
 		{
 			bufferPrint(buff, &buff_indicator);
