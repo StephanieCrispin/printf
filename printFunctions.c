@@ -6,6 +6,7 @@ int _write_character(char s, char buff[], int size);
  * @args:First param
  * @buff: Second param
  * @size: Third param
+ *  Return: returns an int
  */
 
 int printoutChar(va_list args, char buff[], int size)
@@ -25,6 +26,7 @@ int printoutChar(va_list args, char buff[], int size)
  * @args:First param
  * @buff: Second param
  * @size: Third param
+ *  Return: returns an int
  */
 int printoutString(va_list args, char buff[], int size)
 {
@@ -50,6 +52,8 @@ int printoutString(va_list args, char buff[], int size)
  * @args:First param
  * @buff: Second param
  * @size: Third param
+ * Return: returns an int
+
  */
 int printoutMod(va_list args, char buff[], int size)
 {
@@ -63,6 +67,7 @@ int printoutMod(va_list args, char buff[], int size)
  * @args:First param
  * @buff: Second param
  * @size: Third param
+ *  Return: returns an int
  */
 int _write_character(char s, char buff[], int size)
 {
