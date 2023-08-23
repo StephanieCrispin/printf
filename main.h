@@ -13,14 +13,16 @@
  * @func: Represents corresponding function
  */
 
-/**
- * print_func -typepede for struct for operations
- */
-typedef struct fc
+struct fc
 {
 	char f;
 	int (*func)(va_list, char[], int size);
-} print_func;
+};
+
+/**
+ * print_func - Typedef for struct for operations
+ */
+typedef struct fc print_func;
 
 int _printf(const char *format, ...);
 int controlPrint(const char *f, int *buffer_indicator,
