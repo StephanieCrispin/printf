@@ -11,10 +11,15 @@ int _printf(const char *format, ...)
 	int u = 0, buff_indicator = 0, chars_printed = 0, printed = 0, size;
 	va_list args;
 	char buff[SINGLE_BUFF];
-
-	va_start(args, format);
 	if (format == NULL)
+	{
+		_write_character(' ', buff, 1);
 		return (-1);
+	}
+	else
+
+		va_start(args, format);
+
 	for (; format && format[u] != '\0'; u++)
 	{
 		if (format[u] != '%')
