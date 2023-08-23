@@ -42,8 +42,6 @@ int _printf(const char *format, ...)
 			}
 			chars_printed += printed;
 		}
-		if (format[u] == 'd' || format[u] == 'i')
-			chars_printed += handle_int(args, buff, u);
 	}
 	bufferPrint(buff, &buff_indicator);
 	va_end(args);
