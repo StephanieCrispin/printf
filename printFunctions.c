@@ -53,7 +53,6 @@ int printoutString(va_list args, char buff[], int size)
  * @buff: Second param
  * @size: Third param
  * Return: returns an int
-
  */
 int printoutMod(va_list args, char buff[], int size)
 {
@@ -64,7 +63,7 @@ int printoutMod(va_list args, char buff[], int size)
 }
 /**
  * _write_character-> Writes a single character to stdout
- * @args:First param
+ * @s:First param
  * @buff: Second param
  * @size: Third param
  *  Return: returns an int
