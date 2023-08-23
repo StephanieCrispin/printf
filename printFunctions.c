@@ -1,6 +1,13 @@
 #include "main.h"
 int _write_character(char s, char buff[], int size);
 
+/**
+ * printoutChar -> Prints one character
+ * @args:First param
+ * @buff: Second param
+ * @size: Third param
+ */
+
 int printoutChar(va_list args, char buff[], int size)
 {
 	char s;
@@ -13,6 +20,12 @@ int printoutChar(va_list args, char buff[], int size)
 	return (write(1, buff, 1));
 }
 
+/**
+ * printoutString -> prints out a string
+ * @args:First param
+ * @buff: Second param
+ * @size: Third param
+ */
 int printoutString(va_list args, char buff[], int size)
 {
 	char *string;
@@ -32,6 +45,12 @@ int printoutString(va_list args, char buff[], int size)
 	return (write(1, string, len));
 }
 
+/**
+ * printoutMod-> Prints out value for modulus format specifier
+ * @args:First param
+ * @buff: Second param
+ * @size: Third param
+ */
 int printoutMod(va_list args, char buff[], int size)
 {
 	(void)size;
@@ -39,7 +58,12 @@ int printoutMod(va_list args, char buff[], int size)
 	(void)args;
 	return (write(1, "%%", 1));
 }
-
+/**
+ * _write_character-> Writes a single character to stdout
+ * @args:First param
+ * @buff: Second param
+ * @size: Third param
+ */
 int _write_character(char s, char buff[], int size)
 {
 	(void)size;
