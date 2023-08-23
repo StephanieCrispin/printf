@@ -48,8 +48,7 @@ int _printf(const char *format, ...)
 	}
 	bufferPrint(buff, &buff_indicator);
 	va_end(args);
-
-	/*if ((format[0] == '%' && format[1] == ' '))
-		chars_printed = -1;*/
+	if (format[0] == '\n' || (format[0] == '%' && (!format[1])))
+		chars_printed = -1;
 	return (chars_printed);
 }
