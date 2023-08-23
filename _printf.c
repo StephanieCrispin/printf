@@ -18,8 +18,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (; format && format[u] != '\0'; u++)
 	{
-		if (format[u] == '%' && format[u + 1] == ' ' && format[u + 2] == '%')
-			chars_printed = 1;
 		if (format[u] != '%')
 		{
 			buff[buff_indicator++] = format[u];
