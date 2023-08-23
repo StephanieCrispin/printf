@@ -8,15 +8,13 @@
 #include <unistd.h>
 
 /**
- * struct fc print_func - Struct for operations
+ * struct fc - Struct for operations
  * @f: Represents format specifiers
  * @func: Represents corresponding function
  */
+
 /**
- * typedef struct fc print_func -type alias for struct for operations
- *
- * @f: Represents format specifiers
- * @func: Represents corresponding function
+ * print_func -typepede for struct for operations
  */
 typedef struct fc
 {
