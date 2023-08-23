@@ -13,7 +13,9 @@ int _printf(const char *format, ...)
 	char buff[SINGLE_BUFF];
 	if (format == NULL)
 	{
-		_write_character(' ', buff, 1);
+		buff[0] = ' ';
+		buff_indicator = 1;
+		bufferPrint(buff, &buff_indicator);
 		return (-1);
 	}
 	else
