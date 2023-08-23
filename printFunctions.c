@@ -59,7 +59,7 @@ int printoutMod(va_list args, char buff[], int size)
 	(void)size;
 	(void)buff;
 	(void)args;
-	return (write(1, "%%", 1));
+	return (write(1, "%", 1));
 }
 /**
  * _write_character-> Writes a single character to stdout

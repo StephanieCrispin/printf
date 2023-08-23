@@ -14,9 +14,12 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
+
 	va_start(args, format);
 	for (; format && format[u] != '\0'; u++)
 	{
+		if (format[u] == '%' && format[u + 1] == ' ' && format[u + 2] == '%')
+			chars_printed = 1;
 		if (format[u] != '%')
 		{
 			buff[buff_indicator++] = format[u];
@@ -45,7 +48,9 @@ int _printf(const char *format, ...)
 	}
 	bufferPrint(buff, &buff_indicator);
 	va_end(args);
-	if (format[0] == '%' && format[1] == ' ')
-		chars_printed = -1;
+
+	/*if ((format[0] == '%' && format[1] == ' '))
+		chars_printed = -1;*/
+
 	return (chars_printed);
 }
