@@ -6,8 +6,14 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 /**
- * typedef struct fc print_func - Struct for operations
+ * struct fc print_func - Struct for operations
+ * @f: Represents format specifiers
+ * @func: Represents corresponding function
+ */
+/**
+ * typedef struct fc print_func -type alias for struct for operations
  *
  * @f: Represents format specifiers
  * @func: Represents corresponding function
@@ -19,7 +25,8 @@ typedef struct fc
 } print_func;
 
 int _printf(const char *format, ...);
-int controlPrint(const char *f, int *buffer_indicator, va_list args, char buff[], int size);
+int controlPrint(const char *f, int *buffer_indicator,
+				 va_list args, char buff[], int size);
 void bufferPrint(char buff[], int *buff_indicator);
 
 int printoutChar(va_list args, char buff[], int size);
