@@ -1,5 +1,4 @@
 #include "main.h"
-int _write_character(char s, char buff[], int size);
 
 /**
  * printoutChar -> Prints one character
@@ -39,7 +38,6 @@ int printoutString(va_list args, char buff[], int size)
 	string = va_arg(args, char *);
 	if (string == NULL)
 		string = "(null)";
-
 	while (string[len] != '\0')
 	{
 		len++;

@@ -32,6 +32,10 @@ void bufferPrint(char buff[], int *buff_indicator);
 int printoutChar(va_list args, char buff[], int size);
 int printoutString(va_list args, char buff[], int size);
 int printoutMod(va_list args, char buff[], int size);
+
+int _write_character(char s, char buff[], int size);
+int _putchar(char s);
+
 /**SIZE*/
 int getBuff_size(const char *format, int *u);
 

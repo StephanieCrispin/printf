@@ -12,9 +12,9 @@ int _printf(const char *format, ...)
 	va_list args;
 	char buff[SINGLE_BUFF];
 
+	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	va_start(args, format);
 	for (; format && format[u] != '\0'; u++)
 	{
 		if (format[u] != '%')
