@@ -51,6 +51,5 @@ int _printf(const char *format, ...)
 
 	/*if ((format[0] == '%' && format[1] == ' '))
 		chars_printed = -1;*/
-
 	return (chars_printed);
 }
