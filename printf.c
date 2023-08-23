@@ -1,22 +1,20 @@
 #include "main.h"
 
+/**
+ * _printf -> Replicates the standard library's printf function
+ * @format: First paramter of a varaidic function
+ * Return: returns the number of values outputted to stdout
+ */
+
 int _printf(const char *format, ...)
 {
     int u = 0, buff_indicator = 0, chars_printed = 0, printed = 0, size;
-
     va_list args;
-
     char buff[SINGLE_BUFF];
 
-    (void)size;
-    (void)printed;
     if (format == NULL)
-    {
         return (-1);
-    }
-
     va_start(args, format);
-
     for (; format && format[u] != '\0'; u++)
     {
         if (format[u] != '%')
@@ -28,9 +26,7 @@ int _printf(const char *format, ...)
                 chars_printed += SINGLE_BUFF;
             }
             else
-            {
                 chars_printed++;
-            }
         }
         else
         {
@@ -45,7 +41,6 @@ int _printf(const char *format, ...)
                 return (-1);
             }
             chars_printed += printed;
-            /*  chars_printed++;*/
         }
     }
     bufferPrint(buff, &buff_indicator);
