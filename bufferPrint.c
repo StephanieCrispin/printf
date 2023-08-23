@@ -11,6 +11,7 @@ void bufferPrint(char buff[], int *buff_indicator)
 	if (*buff_indicator > 0)
 	{
 		int chars_written = write(1, buff, *buff_indicator);
+
 		if (chars_written < 0)
 		{
 			write(2, "Error\n", sizeof("Error\n") - 1);
