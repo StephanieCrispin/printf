@@ -9,13 +9,17 @@
  * Return: an integer value
  */
 
-int controlPrint(const char *f, int *buffer_indicator, va_list args, char buff[], int size)
+int controlPrint(const char *f, int *buffer_indicator,
+				 va_list args, char buff[], int size)
 {
 	int u = 0, chars_printed = -1;
 	int length_unknown = 0;
 
 	print_func funcs[] = {
-		{'c', printoutChar}, {'s', printoutString}, {'%', printoutMod}, {'\0', NULL}};
+		{'c', printoutChar},
+		{'s', printoutString},
+		{'%', printoutMod},
+		{'\0', NULL}};
 
 	(void)chars_printed;
 
@@ -39,23 +43,4 @@ int controlPrint(const char *f, int *buffer_indicator, va_list args, char buff[]
 		return (length_unknown);
 	}
 	return (funcs[u].func(args, buff, size));
-}
-
-/**
- * bufferPrint -> Writes out characters to the buffer and neccesary errors
- * @buff: First param
- * @buff_indicator: Second param
- */
-
-void bufferPrint(char buff[], int *buff_indicator)
-{
-	if (*buff_indicator > 0)
-	{
-		int chars_written = write(1, buff, *buff_indicator);
-		if (chars_written < 0)
-		{
-			write(2, "Error writing to output\n", sizeof("Error writing to output\n") - 1);
-		}
-	}
-	*buff_indicator = 0;
 }
