@@ -125,12 +125,12 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 {
 	int loopVar;
 	converter_t converters[] = {
-		{'c', convert_c},
+		{'c', convert_ch},
 		{'s', convert_s},
 		{'d', convert_di},
 		{'i', convert_di},
 		{'%', convert_percent},
-		{'b', convert_b},
+		{'b', convert_base},
 		{'u', convert_u},
 		{'o', convert_o},
 		{'x', convert_x},

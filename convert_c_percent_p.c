@@ -1,7 +1,7 @@
 #include "main.h"
 
-unsigned int convert_c(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len);
+unsigned int convert_ch(va_list args, buffer_t *output,
+						unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_percent(va_list args, buffer_t *output,
 							 unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_p(va_list args, buffer_t *output,
@@ -31,13 +31,13 @@ unsigned int convert_percent(va_list args, buffer_t *output,
 
 	returns = returns + print_width(output, returns, flags, wid);
 	returns = returns + _memcpy(output, &percent, 1);
-	returns = returns + print_neg_width(output, returns, flags, wid);
+	returns = returns + print_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
 
 /**
- * convert_c - Converts an argument to an unsigned char and
+ * convert_ch - Converts an argument to an unsigned char and
  *             stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -48,8 +48,8 @@ unsigned int convert_percent(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_c(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len)
+unsigned int convert_ch(va_list args, buffer_t *output,
+						unsigned char flags, int wid, int prec, unsigned char len)
 {
 	char c;
 	unsigned int returns = 0;
@@ -61,7 +61,7 @@ unsigned int convert_c(va_list args, buffer_t *output,
 
 	returns = returns + print_width(output, returns, flags, wid);
 	returns = returns + _memcpy(output, &c, 1);
-	returns = returns + print_neg_width(output, returns, flags, wid);
+	returns = returns + print_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -94,7 +94,7 @@ unsigned int convert_p(va_list args, buffer_t *output,
 	flags |= 32;
 	returns = returns + convert_ubase(output, address, "0123456789abcdef",
 									  flags, wid, prec);
-	returns = returns + print_neg_width(output, returns, flags, wid);
+	returns = returns + print_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }

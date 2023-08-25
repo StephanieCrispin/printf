@@ -58,7 +58,7 @@ unsigned int convert_X(va_list args, buffer_t *output,
 		returns += convert_ubase(output, nums, "0123456789ABCDEF",
 								 flags, wid, prec);
 
-	returns += print_neg_width(output, returns, flags, wid);
+	returns += print_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -96,7 +96,7 @@ unsigned int convert_x(va_list args, buffer_t *output,
 		returns += convert_ubase(output, num, "0123456789abcdef",
 								 flags, wid, prec);
 
-	returns += print_neg_width(output, returns, flags, wid);
+	returns += print_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }

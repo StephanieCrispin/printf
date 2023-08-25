@@ -61,16 +61,16 @@ typedef struct flag_s
 int _printf(const char *format, ...);
 
 /* Conversion Specifier Functions */
-unsigned int convert_c(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len);
+unsigned int convert_ch(va_list args, buffer_t *output,
+						unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_s(va_list args, buffer_t *output,
 					   unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_di(va_list args, buffer_t *output,
 						unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_percent(va_list args, buffer_t *output,
 							 unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_b(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len);
+unsigned int convert_base(va_list args, buffer_t *output,
+						  unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_u(va_list args, buffer_t *output,
 					   unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_o(va_list args, buffer_t *output,
@@ -101,8 +101,8 @@ unsigned int print_width(buffer_t *output, unsigned int printed,
 						 unsigned char flags, int wid);
 unsigned int print_string_width(buffer_t *output,
 								unsigned char flags, int wid, int prec, int size);
-unsigned int print_neg_width(buffer_t *output, unsigned int printed,
-							 unsigned char flags, int wid);
+unsigned int print_negative_width(buffer_t *output, unsigned int printed,
+								  unsigned char flags, int wid);
 
 /* Helper Functions */
 buffer_t *init_buffer(void);
