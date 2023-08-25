@@ -36,7 +36,7 @@ unsigned int convert_s(va_list args, buffer_t *output,
 	for (size = 0; *(string + size);)
 		size++;
 
-	returns = returns + print_string_width(output, flags, wid, prec, size);
+	returns = returns + print_out_string_width(output, flags, wid, prec, size);
 
 	prec = (prec == -1) ? size : prec;
 	while (*string != '\0' && prec > 0)
@@ -46,7 +46,7 @@ unsigned int convert_s(va_list args, buffer_t *output,
 		string++;
 	}
 
-	returns = returns + print_negative_width(output, returns, flags, wid);
+	returns = returns + print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -66,7 +66,7 @@ unsigned int convert_S(va_list args, buffer_t *output,
 	for (size = 0; string[size];)
 		size++;
 
-	returns = returns + print_string_width(output, flags, wid, prec, size);
+	returns = returns + print_out_string_width(output, flags, wid, prec, size);
 
 	prec = (prec == -1) ? size : prec;
 	for (index = 0; *(string + index) != '\0' && index < prec; index++)
@@ -83,7 +83,7 @@ unsigned int convert_S(va_list args, buffer_t *output,
 		returns = returns + _memcpy(output, (string + index), 1);
 	}
 
-	returns = returns + print_negative_width(output, returns, flags, wid);
+	returns = returns + print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -108,7 +108,7 @@ unsigned int convert_R(va_list args, buffer_t *output,
 	for (size = 0; *(string + size);)
 		size++;
 
-	returns += print_string_width(output, flags, wid, prec, size);
+	returns += print_out_string_width(output, flags, wid, prec, size);
 
 	prec = (prec == -1) ? size : prec;
 	for (i = 0; *(string + i) != '\0' && i < prec; i++)
@@ -125,7 +125,7 @@ unsigned int convert_R(va_list args, buffer_t *output,
 			returns += _memcpy(output, (string + i), 1);
 	}
 
-	returns += print_negative_width(output, returns, flags, wid);
+	returns += print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -148,7 +148,7 @@ unsigned int convert_r(va_list args, buffer_t *output,
 	for (size = 0; *(string + size);)
 		size++;
 
-	returns = returns + print_string_width(output, flags, wid, prec, size);
+	returns = returns + print_out_string_width(output, flags, wid, prec, size);
 
 	end = size - 1;
 	prec = (prec == -1) ? size : prec;
@@ -158,7 +158,7 @@ unsigned int convert_r(va_list args, buffer_t *output,
 		end--;
 	}
 
-	returns = returns + print_negative_width(output, returns, flags, wid);
+	returns = returns + print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }

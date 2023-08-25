@@ -1,13 +1,14 @@
 #include "main.h"
 
-unsigned char handle_flags(const char *flag, char *index);
-unsigned char handle_length(const char *modifier, char *index);
-int handle_width(va_list args, const char *modifier, char *index);
-int handle_precision(va_list args, const char *modifier, char *index);
+unsigned char func_handle_flags(const char *flag, char *index);
+unsigned char func_handle_length(const char *modifier, char *index);
+int func_handle_width(va_list args, const char *modifier, char *index);
+int func_handle_precision(va_list args, const char *modifier, char *index);
+
 unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 														 unsigned char, int, int, unsigned char);
 
-unsigned char handle_flags(const char *flag, char *index)
+unsigned char func_handle_flags(const char *flag, char *index)
 {
 	int i, j;
 	unsigned char ret = 0;
@@ -40,12 +41,12 @@ unsigned char handle_flags(const char *flag, char *index)
 	return (ret);
 }
 
-unsigned char handle_length(const char *modifier, char *index)
+unsigned char func_handle_length(const char *modifier, char *index)
 {
 	if (*modifier == 'h')
 	{
 		(*index)++;
-		return (SHORT);
+		return (SHORTINT);
 	}
 
 	else if (*modifier == 'l')
@@ -57,7 +58,7 @@ unsigned char handle_length(const char *modifier, char *index)
 	return (0);
 }
 
-int handle_width(va_list args, const char *modifier, char *index)
+int func_handle_width(va_list args, const char *modifier, char *index)
 {
 	int value = 0;
 
@@ -81,7 +82,37 @@ int handle_width(va_list args, const char *modifier, char *index)
 	return (value);
 }
 
-int handle_precision(va_list args, const char *modifier, char *index)
+unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
+														 unsigned char, int, int, unsigned char)
+{
+	int loopVar;
+	converter_t converters[] = {
+		{'c', convert_ch},
+		{'s', convert_s},
+		{'d', convert_di},
+		{'i', convert_di},
+		{'%', convert_percentage},
+		{'b', convert_base},
+		{'u', convert_u},
+		{'o', convert_o},
+		{'x', convert_lower_x},
+		{'X', convert_caps_X},
+		{'S', convert_S},
+		{'p', convert_p},
+		{'r', convert_r},
+		{'R', convert_R},
+		{0, NULL}};
+
+	for (loopVar = 0; converters[loopVar].func; loopVar++)
+	{
+		if (converters[loopVar].specifier == *specifier)
+			return (converters[loopVar].func);
+	}
+
+	return (0);
+}
+
+int func_handle_precision(va_list args, const char *modifier, char *index)
 {
 	int value = 0;
 
@@ -118,34 +149,4 @@ int handle_precision(va_list args, const char *modifier, char *index)
 	}
 
 	return (value);
-}
-
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
-														 unsigned char, int, int, unsigned char)
-{
-	int loopVar;
-	converter_t converters[] = {
-		{'c', convert_ch},
-		{'s', convert_s},
-		{'d', convert_di},
-		{'i', convert_di},
-		{'%', convert_percent},
-		{'b', convert_base},
-		{'u', convert_u},
-		{'o', convert_o},
-		{'x', convert_x},
-		{'X', convert_X},
-		{'S', convert_S},
-		{'p', convert_p},
-		{'r', convert_r},
-		{'R', convert_R},
-		{0, NULL}};
-
-	for (loopVar = 0; converters[loopVar].func; loopVar++)
-	{
-		if (converters[loopVar].specifier == *specifier)
-			return (converters[loopVar].func);
-	}
-
-	return (0);
 }

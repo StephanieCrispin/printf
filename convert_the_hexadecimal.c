@@ -1,9 +1,9 @@
 #include "main.h"
 
-unsigned int convert_x(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_X(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len);
+unsigned int convert_lower_x(va_list args, buffer_t *output,
+							 unsigned char flags, int wid, int prec, unsigned char len);
+unsigned int convert_caps_X(va_list args, buffer_t *output,
+							unsigned char flags, int wid, int prec, unsigned char len);
 
 /**
  * isLengthLong-> Checks of length is long
@@ -26,7 +26,7 @@ int isLengthShort(int len)
 }
 
 /**
- * convert_X - Converts an unsigned int argument to hex using ABCDEF
+ * convert_caps_X - Converts an unsigned int argument to hex using ABCDEF
  *             and stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -37,8 +37,8 @@ int isLengthShort(int len)
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_X(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len)
+unsigned int convert_caps_X(va_list args, buffer_t *output,
+							unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned long int nums;
 	unsigned int returns = 0;
@@ -58,13 +58,13 @@ unsigned int convert_X(va_list args, buffer_t *output,
 		returns += convert_ubase(output, nums, "0123456789ABCDEF",
 								 flags, wid, prec);
 
-	returns += print_negative_width(output, returns, flags, wid);
+	returns += print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
 
 /**
- * convert_x - Converts an unsigned int argument to hex using abcdef
+ * convert_lower_x - Converts an unsigned int argument to hex using abcdef
  *             and stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -75,8 +75,8 @@ unsigned int convert_X(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_x(va_list args, buffer_t *output,
-					   unsigned char flags, int wid, int prec, unsigned char len)
+unsigned int convert_lower_x(va_list args, buffer_t *output,
+							 unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned long int num;
 	unsigned int returns = 0;
@@ -96,7 +96,7 @@ unsigned int convert_x(va_list args, buffer_t *output,
 		returns += convert_ubase(output, num, "0123456789abcdef",
 								 flags, wid, prec);
 
-	returns += print_negative_width(output, returns, flags, wid);
+	returns += print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }

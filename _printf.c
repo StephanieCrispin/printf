@@ -26,11 +26,11 @@ int handlePrintf(const char *format, va_list args, buffer_t *output)
 		if (*(format + u) == '%')
 		{
 			temporaryVar = 0;
-			flags = handle_flags(format + u + 1, &temporaryVar);
-			wid = handle_width(args, format + u + temporaryVar + 1, &temporaryVar);
-			prec = handle_precision(args, format + u + temporaryVar + 1,
-									&temporaryVar);
-			len = handle_length(format + u + temporaryVar + 1, &temporaryVar);
+			flags = func_handle_flags(format + u + 1, &temporaryVar);
+			wid = func_handle_width(args, format + u + temporaryVar + 1, &temporaryVar);
+			prec = func_handle_precision(args, format + u + temporaryVar + 1,
+										 &temporaryVar);
+			len = func_handle_length(format + u + temporaryVar + 1, &temporaryVar);
 
 			f = handle_specifiers(format + u + temporaryVar + 1);
 			if (f != NULL)

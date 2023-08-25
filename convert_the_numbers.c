@@ -26,7 +26,7 @@ unsigned int convert_u(va_list args, buffer_t *output,
 		returns += convert_ubase(output, num, "0123456789",
 								 flags, wid, prec);
 
-	returns += print_negative_width(output, returns, flags, wid);
+	returns += print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -86,7 +86,7 @@ unsigned int convert_di(va_list args, buffer_t *output,
 		returns += convert_sbase(output, d, "0123456789",
 								 flags, 0, prec);
 
-	returns += print_negative_width(output, returns, flags, wid);
+	returns += print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
@@ -113,7 +113,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
 		returns += convert_ubase(output, num, "01234567",
 								 flags, wid, prec);
 
-	returns += print_negative_width(output, returns, flags, wid);
+	returns += print_out_negative_width(output, returns, flags, wid);
 
 	return (returns);
 }
